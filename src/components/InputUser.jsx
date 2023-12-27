@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { CardUser } from "./CardUser"
 import {useFetch} from '../hooks/useFetch'
-import {  Box, TextField, createTheme } from "@mui/material"
+import {  Box, TextField} from "@mui/material"
 import GitHubIcon from '@mui/icons-material/GitHub';
 
 
@@ -16,18 +16,17 @@ const { userData, getUsers } = useFetch()
 const [ inputValue, setInputValue ] = useState( '' )
 
 
-// Funcion que actualiza el estado con el valor que se obtiene del evento
+// Función que actualiza el estado con el valor que se obtiene del evento
 const handleInputChange = ({ target }) => {
   setInputValue( target.value )
   
 }
-// funcion que previene el comportamiento por defecto y llama la funcion getUsers y el inputValue como argumento
-const handleSubmit = (e) => {
+// función que previene el comportamiento por defecto y llama la funcion getUsers y el inputValue como argumento
+const handleSubmit =  (e) => {
   e.preventDefault()
-  getUsers(inputValue)
-
+    getUsers(inputValue)
+  }
   // console.log(inputValue)
-}
 
 
 
@@ -41,16 +40,16 @@ const handleSubmit = (e) => {
       borderRadius: 5,
       mt:2
       }}>
-      <form onSubmit={ handleSubmit }>
-        <TextField color="secondary"
+      <form onSubmit={handleSubmit}>
+        <TextField 
         type="text"
         placeholder="Search username" 
         label="Github username"
         value={ inputValue }
         onChange={ handleInputChange } 
         fullWidth={true}
-        InputProps={{ style: {color: "white" }}}
-       
+        InputProps={{ style: {color: "white",}}}
+        InputLabelProps={{style: {color: "white"}}}
        
         />
       </form>
@@ -65,7 +64,7 @@ const handleSubmit = (e) => {
       display:"flex",
       justifyContent:"center"
       }}>
-      {inputValue === "" ? <GitHubIcon sx={{fontSize: 500}}/> : <CardUser userData={ userData } />}
+      {inputValue == "" ?  <GitHubIcon sx={{fontSize: 500}}/> : <CardUser userData={ userData }/>}
 
     </Box>
 
